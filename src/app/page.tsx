@@ -15,7 +15,7 @@ export default function Home() {
           <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
             Maîtrisez n'importe quel
             <br />
-            <span className="text-blue-500">sujet avec Qwizzie</span>
+            <span className="text-blue-500">sujet avec Quizzie</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
