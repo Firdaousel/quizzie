@@ -45,7 +45,7 @@ export default function ResultsPage() {
     );
   }
 
-  const correctAnswersCount = userAnswers.reduce((acc, answer, index) => {
+  const correctAnswersCount = userAnswers.reduce<number>((acc, answer, index) => {
     if (answer === null) return acc;
     return acc + (answer === questionsOrder[index].correctAnswer ? 1 : 0);
   }, 0);

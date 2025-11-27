@@ -31,15 +31,12 @@ export default function Home() {
               Commencer gratuitement
               <span className="text-xl">→</span>
             </Link>
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl">
-              Découvrir comment ça marche
-            </button>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="relative max-w-6xl mx-auto px-8 pb-20">
+      <section className="relative max-w-6xl mx-auto px-8 pb-20 pt-15">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
             <div className="bg-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
