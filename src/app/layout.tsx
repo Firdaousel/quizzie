@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playwrite_US_Trad } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const playwrite = Playwrite_US_Trad({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-playwrite"
+});
 
 export const metadata: Metadata = {
   title: "Quizzie - Générateur de Quizzes",
@@ -16,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${playwrite.variable}`}>{children}</body>
     </html>
   );
 }
