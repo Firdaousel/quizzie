@@ -33,7 +33,41 @@ export default function QuizPage() {
     }
   }, [quiz]);
 
-  if (!quiz || randomizedQuestions.length === 0) {
+  if (!quiz) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-8">
+        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
+          <div className="mb-4">
+            <svg
+              className="mx-auto h-16 w-16 text-red-500"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Quiz introuvable
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Le quiz demandé n'existe pas ou n'a pas pu être chargé.
+          </p>
+          <button
+            onClick={() => router.push("/")}
+            className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+          >
+            Retour aux quiz
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (randomizedQuestions.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -60,11 +94,7 @@ export default function QuizPage() {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(answers[currentQuestionIndex + 1]);
       } else {
-        const score = newAnswers.reduce<number>((acc, answer, index) => {
-          if (answer === null) return acc;
-          return acc + (answer === randomizedQuestions[index].correctAnswer ? 1 : 0);
-        }, 0);
-        alert(`Quiz terminé! Votre score: ${score}/${randomizedQuestions.length}`);
+        alert("Quiz terminé! Merci d'avoir participé.");
         router.push("/");
       }
     }

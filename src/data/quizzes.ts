@@ -117,6 +117,145 @@ export const quizzes: Quiz[] = [
         correctAnswer: 1
       }
     ]
+  },
+  {
+    id: "thailande",
+    title: "Thaïlande",
+    description: "Testez vos connaissances sur la culture et l'histoire de la Thaïlande",
+    questions: [
+      {
+        id: "t1",
+        text: "Quelle est la capitale de la Thaïlande ?",
+        options: [
+          "Phuket",
+          "Bangkok",
+          "Chiang Mai",
+          "Pattaya"
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: "t2",
+        text: "Quelle est la monnaie officielle de la Thaïlande ?",
+        options: [
+          "Le Dong",
+          "Le Yen",
+          "Le Baht",
+          "Le Ringgit"
+        ],
+        correctAnswer: 2
+      },
+      {
+        id: "t3",
+        text: "Comment s'appelle le célèbre temple de Bangkok avec un Bouddha couché de 46 mètres ?",
+        options: [
+          "Wat Arun",
+          "Wat Phra Kaew",
+          "Wat Pho",
+          "Wat Saket"
+        ],
+        correctAnswer: 2
+      },
+      {
+        id: "t4",
+        text: "Quel est le nom traditionnel de la Thaïlande ?",
+        options: [
+          "Siam",
+          "Indochine",
+          "Birmanie",
+          "Khmer"
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: "t5",
+        text: "Quelle fête thaïlandaise célèbre le Nouvel An avec des batailles d'eau ?",
+        options: [
+          "Loy Krathong",
+          "Songkran",
+          "Visakha Bucha",
+          "Makha Bucha"
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: "t6",
+        text: "Quel sport de combat est originaire de Thaïlande ?",
+        options: [
+          "Le Karaté",
+          "Le Judo",
+          "Le Muay Thai",
+          "Le Taekwondo"
+        ],
+        correctAnswer: 2
+      },
+      {
+        id: "t7",
+        text: "Quelle est la religion majoritaire en Thaïlande ?",
+        options: [
+          "L'Hindouisme",
+          "L'Islam",
+          "Le Christianisme",
+          "Le Bouddhisme"
+        ],
+        correctAnswer: 3
+      },
+      {
+        id: "t8",
+        text: "Comment appelle-t-on les taxi-moto à trois roues typiques de Thaïlande ?",
+        options: [
+          "Rickshaw",
+          "Tuk-tuk",
+          "Songthaew",
+          "Samlor"
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: "t9",
+        text: "Quelle île thaïlandaise est célèbre pour ses plages paradisiaques et sa vie nocturne ?",
+        options: [
+          "Koh Samui",
+          "Koh Lanta",
+          "Phuket",
+          "Koh Tao"
+        ],
+        correctAnswer: 2
+      },
+      {
+        id: "t10",
+        text: "Quel plat thaïlandais est un sauté de nouilles de riz ?",
+        options: [
+          "Tom Yum",
+          "Pad Thai",
+          "Som Tam",
+          "Massaman"
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: "t11",
+        text: "Qui est l'actuel roi de Thaïlande (depuis 2016) ?",
+        options: [
+          "Bhumibol Adulyadej",
+          "Maha Vajiralongkorn",
+          "Chulalongkorn",
+          "Prajadhipok"
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: "t12",
+        text: "Quelle ville du nord de la Thaïlande est connue pour ses temples et sa vieille ville ?",
+        options: [
+          "Chiang Rai",
+          "Sukhothai",
+          "Chiang Mai",
+          "Ayutthaya"
+        ],
+        correctAnswer: 2
+      }
+    ]
   }
 ];
 
