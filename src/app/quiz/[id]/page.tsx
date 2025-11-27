@@ -60,7 +60,8 @@ export default function QuizPage() {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(answers[currentQuestionIndex + 1]);
       } else {
-        const score = newAnswers.reduce((acc, answer, index) => {
+        const score = newAnswers.reduce<number>((acc, answer, index) => {
+          if (answer === null) return acc;
           return acc + (answer === randomizedQuestions[index].correctAnswer ? 1 : 0);
         }, 0);
         alert(`Quiz terminé! Votre score: ${score}/${randomizedQuestions.length}`);
