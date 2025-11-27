@@ -35,6 +35,7 @@ export default function Home() {
         </div>
       </section>
 
+        <div className="min-h-screen">
       {/* Features Section */}
       <section className="relative max-w-6xl mx-auto px-8 pb-20 pt-15">
         <div className="grid md:grid-cols-3 gap-8">
@@ -115,6 +116,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+        </div>
     </main>
   );
 }
