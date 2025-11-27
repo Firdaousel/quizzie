@@ -4,7 +4,6 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const playwrite = Playwrite_US_Trad({
-  subsets: ["latin"],
   weight: ["400"],
   variable: "--font-playwrite"
 });
