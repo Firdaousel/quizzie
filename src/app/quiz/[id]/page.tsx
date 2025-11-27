@@ -94,8 +94,9 @@ export default function QuizPage() {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(answers[currentQuestionIndex + 1]);
       } else {
-        alert("Quiz terminé! Merci d'avoir participé.");
-        router.push("/");
+        const answersParam = encodeURIComponent(JSON.stringify(newAnswers));
+        const questionsParam = encodeURIComponent(JSON.stringify(randomizedQuestions));
+        router.push(`/quiz/${quizId}/results?answers=${answersParam}&questions=${questionsParam}`);
       }
     }
   };
