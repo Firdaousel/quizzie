@@ -1,4 +1,5 @@
 import { Quiz } from "@/types/quiz";
+import { getAllQuizzes } from "@/lib/quizStorage";
 
 export const quizzes: Quiz[] = [
   {
@@ -260,5 +261,6 @@ export const quizzes: Quiz[] = [
 ];
 
 export function getQuizById(id: string): Quiz | undefined {
-  return quizzes.find(quiz => quiz.id === id);
+  const allQuizzes = getAllQuizzes();
+  return allQuizzes.find(quiz => quiz.id === id);
 }

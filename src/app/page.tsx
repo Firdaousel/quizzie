@@ -1,8 +1,35 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { quizzes } from "@/data/quizzes";
-import { Brain, TrendingUp, Target } from "lucide-react";
+import { Quiz } from "@/types/quiz";
+import { getAllQuizzes, isImportedQuiz, removeQuizFromLocalStorage } from "@/lib/quizStorage";
+import { Brain, TrendingUp, Target, Trash2 } from "lucide-react";
+import QuizImporter from "@/components/QuizImporter";
 
 export default function Home() {
+  const [quizzes, setQuizzes] = useState<Quiz[]>([]);
+
+  useEffect(() => {
+    loadQuizzes();
+  }, []);
+
+  const loadQuizzes = () => {
+    const allQuizzes = getAllQuizzes();
+    setQuizzes(allQuizzes);
+  };
+
+  const handleQuizImported = () => {
+    loadQuizzes();
+  };
+
+  const handleDeleteQuiz = (quizId: string, quizTitle: string) => {
+    if (confirm(`Êtes-vous sûr de vouloir supprimer le quiz "${quizTitle}" ?`)) {
+      removeQuizFromLocalStorage(quizId);
+      loadQuizzes();
+    }
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50">
       {/* Hero Section */}
@@ -88,32 +115,57 @@ export default function Home() {
           </p>
         </div>
 
+        <QuizImporter onQuizImported={handleQuizImported} />
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-          {quizzes.map((quiz) => (
-            <Link
-              key={quiz.id}
-              href={`/quiz/${quiz.id}`}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100 hover:border-blue-300 hover:-translate-y-1"
-            >
-              <div className="flex flex-col h-full">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-blue-500 transition-colors">
-                  {quiz.title}
-                </h2>
-                <p className="text-gray-600 mb-6 flex-grow text-lg leading-relaxed">
-                  {quiz.description}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 bg-gray-100 px-4 py-2 rounded-full">
-                    {quiz.questions.length} questions
-                  </span>
-                  <span className="text-blue-500 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Commencer
-                    <span className="text-xl">→</span>
-                  </span>
-                </div>
+          {quizzes.map((quiz) => {
+            const imported = isImportedQuiz(quiz.id);
+            return (
+              <div key={quiz.id} className="relative">
+                <Link
+                  href={`/quiz/${quiz.id}`}
+                  className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100 hover:border-blue-300 hover:-translate-y-1 block"
+                >
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-start justify-between mb-3">
+                      <h2 className="text-3xl font-bold text-gray-900 group-hover:text-blue-500 transition-colors">
+                        {quiz.title}
+                      </h2>
+                      {imported && (
+                        <span className="bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-medium ml-2 flex-shrink-0">
+                          Importé
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-gray-600 mb-6 flex-grow text-lg leading-relaxed">
+                      {quiz.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-500 bg-gray-100 px-4 py-2 rounded-full">
+                        {quiz.questions.length} questions
+                      </span>
+                      <span className="text-blue-500 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Commencer
+                        <span className="text-xl">→</span>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+                {imported && (
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleDeleteQuiz(quiz.id, quiz.title);
+                    }}
+                    className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg transition-colors shadow-md z-10"
+                    title="Supprimer ce quiz"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                )}
               </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
         </div>
