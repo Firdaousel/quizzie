@@ -1,0 +1,40 @@
+{
+  "id": "quiz-simple-test",
+  "title": "Quiz Simple - Test",
+  "description": "Un quiz simple de 3 questions pour tester l'importation",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Quelle est la capitale de la France ?",
+      "options": [
+        "Paris",
+        "Lyon",
+        "Marseille",
+        "Bordeaux"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Combien de jours y a-t-il dans une semaine ?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Quelle est la couleur du ciel par temps clair ?",
+      "options": [
+        "Vert",
+        "Rouge",
+        "Bleu",
+        "Jaune"
+      ],
+      "correctAnswer": 2
+    }
+  ]
+}

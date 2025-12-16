@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { Quiz } from "@/types/quiz";
 import { validateQuizStructure, validateQuizTypes, checkQuizIdUniqueness } from "@/lib/quizValidation";
 import { saveQuizToLocalStorage, getAllQuizzes } from "@/lib/quizStorage";
-import { Upload, X, CheckCircle, AlertCircle } from "lucide-react";
+import { Upload, X, CheckCircle, AlertCircle, Download, FileJson } from "lucide-react";
 
 interface QuizImporterProps {
   onQuizImported: () => void;
@@ -105,10 +105,161 @@ export default function QuizImporter({ onQuizImported }: QuizImporterProps) {
     setValidationErrors([]);
   };
 
+  const handleDownloadTemplate = () => {
+    const template = {
+      id: "mon-quiz-exemple",
+      title: "Mon Quiz d'Exemple",
+      description: "Une description claire et concise du contenu de ce quiz",
+      questions: [
+        {
+          id: "q1",
+          text: "Quelle est la capitale de la France ?",
+          options: ["Paris", "Lyon", "Marseille", "Bordeaux"],
+          correctAnswer: 0
+        },
+        {
+          id: "q2",
+          text: "Combien font 2 + 2 ?",
+          options: ["3", "4", "5", "22"],
+          correctAnswer: 1
+        },
+        {
+          id: "q3",
+          text: "Quel langage de programmation est principalement utilisé pour le développement web côté client ?",
+          options: ["Python", "Java", "JavaScript", "C++"],
+          correctAnswer: 2
+        },
+        {
+          id: "q4",
+          text: "Quelle est la couleur du ciel par temps clair ?",
+          options: ["Vert", "Rouge", "Jaune", "Bleu"],
+          correctAnswer: 3
+        }
+      ]
+    };
+
+    const blob = new Blob([JSON.stringify(template, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'modele-quiz.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleDownloadGuide = () => {
+    const guide = `# Guide de Création de Quiz - Quizzie
+
+## Structure d'un Quiz JSON
+
+Un quiz doit contenir 4 propriétés principales :
+
+{
+  "id": "identifiant-unique",        // ID unique sans espaces
+  "title": "Titre du Quiz",          // Titre affiché
+  "description": "Description...",   // Description du quiz
+  "questions": [ ... ]               // Tableau de questions
+}
+
+## Structure d'une Question
+
+Chaque question contient 4 propriétés :
+
+{
+  "id": "q1",                        // ID unique de la question
+  "text": "Votre question ?",        // Texte de la question
+  "options": [                       // Choix de réponses (min 2)
+    "Option 1",                      // Index 0
+    "Option 2",                      // Index 1
+    "Option 3",                      // Index 2
+    "Option 4"                       // Index 3
+  ],
+  "correctAnswer": 0                 // Index de la bonne réponse
+}
+
+## ⚠️ IMPORTANT : L'index commence à 0 !
+
+- Première option = 0
+- Deuxième option = 1
+- Troisième option = 2
+- Quatrième option = 3
+
+## Exemple Complet
+
+{
+  "id": "culture-generale",
+  "title": "Culture Générale",
+  "description": "Testez vos connaissances",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Quelle est la capitale de l'Italie ?",
+      "options": ["Milan", "Rome", "Florence", "Venise"],
+      "correctAnswer": 1
+    }
+  ]
+}
+
+## Checklist Avant Import
+
+- [ ] L'ID du quiz est unique
+- [ ] Il y a au moins 1 question
+- [ ] Chaque question a au moins 2 options
+- [ ] Le correctAnswer est entre 0 et (nombre d'options - 1)
+- [ ] Le JSON est valide (testez sur jsonlint.com)
+
+## Erreurs Courantes
+
+1. "Un quiz avec l'ID 'xxx' existe déjà"
+   → Changez l'ID du quiz
+
+2. "correctAnswer doit être un nombre entre 0 et X"
+   → Vérifiez que correctAnswer est un nombre (pas de guillemets)
+   → Vérifiez qu'il est entre 0 et (nombre d'options - 1)
+
+3. "Le fichier n'est pas un JSON valide"
+   → Vérifiez les virgules (pas après le dernier élément)
+   → Vérifiez les guillemets (doubles " uniquement)
+
+Bon quiz ! 🎉
+`;
+
+    const blob = new Blob([guide], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'guide-creation-quiz.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="mb-8">
-      <div className="flex justify-center">
-        <label className="cursor-pointer bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row justify-center gap-3">
+        {/* Bouton Télécharger Modèle JSON */}
+        <button
+          onClick={handleDownloadTemplate}
+          className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+        >
+          <Download className="w-5 h-5" />
+          Télécharger Modèle JSON
+        </button>
+
+        {/* Bouton Télécharger Guide */}
+        <button
+          onClick={handleDownloadGuide}
+          className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+        >
+          <FileJson className="w-5 h-5" />
+          Télécharger Guide
+        </button>
+
+        {/* Bouton Importer Quiz */}
+        <label className="cursor-pointer bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
           <Upload className="w-5 h-5" />
           Importer un Quiz JSON
           <input

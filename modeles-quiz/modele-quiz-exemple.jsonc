@@ -1,0 +1,175 @@
+{
+  // ═══════════════════════════════════════════════════════════════════
+  // MODÈLE DE QUIZ - QUIZZIE
+  // ═══════════════════════════════════════════════════════════════════
+  // Ce fichier est un modèle avec commentaires explicatifs.
+  // Pour importer dans Quizzie, supprimez tous les commentaires
+  // ou copiez uniquement la structure JSON sans les lignes de commentaires.
+  // ═══════════════════════════════════════════════════════════════════
+
+  // ID DU QUIZ
+  // ----------
+  // Identifiant unique du quiz (utilisé dans l'URL)
+  // - Format : texte sans espaces, utiliser des tirets (-)
+  // - Doit être unique parmi tous vos quiz
+  // - Exemples valides : "javascript-basics", "histoire-france", "quiz-math-2024"
+  "id": "mon-quiz-exemple",
+
+  // TITRE DU QUIZ
+  // -------------
+  // Le titre qui s'affiche sur la page d'accueil et pendant le quiz
+  // - Peut contenir des espaces et des caractères spéciaux
+  // - Gardez-le court et descriptif (max ~50 caractères recommandés)
+  "title": "Mon Quiz d'Exemple",
+
+  // DESCRIPTION DU QUIZ
+  // -------------------
+  // Description courte affichée sur la carte du quiz
+  // - Décrivez le contenu ou l'objectif du quiz
+  // - Max ~100-150 caractères pour un bon affichage
+  "description": "Une description claire et concise du contenu de ce quiz",
+
+  // LISTE DES QUESTIONS
+  // -------------------
+  // Tableau contenant toutes les questions du quiz
+  // - Minimum : 1 question
+  // - Recommandé : 5-15 questions pour une bonne expérience
+  // - Les questions seront mélangées automatiquement lors du quiz
+  "questions": [
+    {
+      // ID DE LA QUESTION
+      // -----------------
+      // Identifiant unique de la question
+      // - Format : texte sans espaces (ex: "q1", "question-1", "js_basics_1")
+      // - Doit être unique dans ce quiz
+      "id": "q1",
+
+      // TEXTE DE LA QUESTION
+      // --------------------
+      // La question posée à l'utilisateur
+      // - Formulez une question claire et précise
+      // - Terminez par un point d'interrogation
+      "text": "Quelle est la capitale de la France ?",
+
+      // OPTIONS DE RÉPONSE
+      // ------------------
+      // Tableau des choix de réponses possibles
+      // - Minimum : 2 options
+      // - Recommandé : 4 options pour une difficulté optimale
+      // - L'ordre des options sera conservé tel quel
+      "options": [
+        "Paris",      // Option 0 (index commence à 0)
+        "Lyon",       // Option 1
+        "Marseille",  // Option 2
+        "Bordeaux"    // Option 3
+      ],
+
+      // RÉPONSE CORRECTE
+      // ----------------
+      // Index de la bonne réponse dans le tableau "options"
+      // - IMPORTANT : L'index commence à 0
+      // - Dans cet exemple : 0 = "Paris" (première option)
+      // - Si la bonne réponse est la 3ème option, mettez 2
+      "correctAnswer": 0
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // DEUXIÈME QUESTION - EXEMPLE AVEC RÉPONSE DIFFÉRENTE
+    // ═══════════════════════════════════════════════════════════════
+    {
+      "id": "q2",
+      "text": "Combien font 2 + 2 ?",
+      "options": [
+        "3",   // Index 0
+        "4",   // Index 1 ← BONNE RÉPONSE
+        "5",   // Index 2
+        "22"   // Index 3
+      ],
+      // La bonne réponse est "4" qui est à l'index 1
+      "correctAnswer": 1
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // TROISIÈME QUESTION - EXEMPLE AVEC TEXTE PLUS LONG
+    // ═══════════════════════════════════════════════════════════════
+    {
+      "id": "q3",
+      "text": "Quel langage de programmation est principalement utilisé pour le développement web côté client ?",
+      "options": [
+        "Python",
+        "Java",
+        "JavaScript",  // Index 2 ← BONNE RÉPONSE
+        "C++"
+      ],
+      "correctAnswer": 2
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // QUATRIÈME QUESTION - EXEMPLE AVEC DERNIÈRE OPTION CORRECTE
+    // ═══════════════════════════════════════════════════════════════
+    {
+      "id": "q4",
+      "text": "Quelle est la couleur du ciel par temps clair ?",
+      "options": [
+        "Vert",
+        "Rouge",
+        "Jaune",
+        "Bleu"    // Index 3 ← BONNE RÉPONSE
+      ],
+      "correctAnswer": 3
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // AJOUTEZ VOS PROPRES QUESTIONS ICI
+    // ═══════════════════════════════════════════════════════════════
+    // Copiez la structure d'une question ci-dessus et modifiez :
+    // - id : Donnez un identifiant unique (q5, q6, etc.)
+    // - text : Votre question
+    // - options : Vos choix de réponses (minimum 2, recommandé 4)
+    // - correctAnswer : L'index de la bonne réponse (0, 1, 2 ou 3)
+    //
+    // N'OUBLIEZ PAS :
+    // - Mettez une virgule après chaque question sauf la dernière
+    // - L'index commence à 0 (première option = 0)
+    // ═══════════════════════════════════════════════════════════════
+  ]
+
+  // ═══════════════════════════════════════════════════════════════════
+  // CONSEILS ET BONNES PRATIQUES
+  // ═══════════════════════════════════════════════════════════════════
+  //
+  // 1. NOMBRE DE QUESTIONS
+  //    - Minimum : 1 question
+  //    - Idéal : 5-15 questions
+  //    - Maximum : Pas de limite, mais restez raisonnable
+  //
+  // 2. NOMBRE D'OPTIONS PAR QUESTION
+  //    - Minimum : 2 options
+  //    - Recommandé : 4 options (bon équilibre difficulté/choix)
+  //    - Maximum : Pas de limite technique
+  //
+  // 3. IDENTIFIANTS (ID)
+  //    - Utilisez des noms descriptifs et uniques
+  //    - Exemples : "q1", "question-1", "geo_france_capitale"
+  //    - Évitez les espaces et caractères spéciaux
+  //
+  // 4. CORRECTANSWER (INDEX)
+  //    - L'index commence TOUJOURS à 0
+  //    - Première option = 0
+  //    - Deuxième option = 1
+  //    - Troisième option = 2, etc.
+  //
+  // 5. VALIDATION
+  //    - Avant d'importer, vérifiez :
+  //      ✓ Tous les ID sont uniques
+  //      ✓ Chaque question a au moins 2 options
+  //      ✓ correctAnswer est bien dans les limites (0 à nombre_options - 1)
+  //      ✓ Pas de virgule après la dernière question
+  //
+  // 6. FORMAT D'IMPORT
+  //    - Pour importer dans Quizzie, supprimez TOUS les commentaires
+  //    - Le fichier doit être un JSON valide (sans //)
+  //    - Vous pouvez utiliser le fichier "modele-quiz-propre.json"
+  //
+  // ═══════════════════════════════════════════════════════════════════
+}

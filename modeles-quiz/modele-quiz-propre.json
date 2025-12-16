@@ -1,0 +1,51 @@
+{
+  "id": "mon-quiz-exemple",
+  "title": "Mon Quiz d'Exemple",
+  "description": "Une description claire et concise du contenu de ce quiz",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Quelle est la capitale de la France ?",
+      "options": [
+        "Paris",
+        "Lyon",
+        "Marseille",
+        "Bordeaux"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Combien font 2 + 2 ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "22"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Quel langage de programmation est principalement utilisé pour le développement web côté client ?",
+      "options": [
+        "Python",
+        "Java",
+        "JavaScript",
+        "C++"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Quelle est la couleur du ciel par temps clair ?",
+      "options": [
+        "Vert",
+        "Rouge",
+        "Jaune",
+        "Bleu"
+      ],
+      "correctAnswer": 3
+    }
+  ]
+}
